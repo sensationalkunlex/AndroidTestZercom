@@ -90,12 +90,24 @@ login( mEmailView.getText().toString().trim(), mPasswordView.getText().toString(
 
 
     private void login(String Username, String Password) {
-        if (TextUtils.isEmpty(mEmailView.getText().toString().trim()) || TextUtils.isEmpty(mPasswordView.getText().toString().trim())) {
+        if (TextUtils.isEmpty(mEmailView.getText().toString().trim())) {
 
             mEmailView.setError("pls enter the Username");
+
+
+        } else if(TextUtils.isEmpty(mPasswordView.getText().toString().trim())){
+
             mPasswordView.setError("pls enter the Password");
 
-        } else {
+
+        }
+
+
+
+        else {
+
+            mEmailView.setError(null);
+            mPasswordView.setError(null);
             PojoObject pr= new PojoObject(Username, Password);
 
             Retrofit retrofit = new Retrofit.Builder()
